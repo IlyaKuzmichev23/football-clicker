@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Football Clicker</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header id="game-header">
+    </header>
+
+    <div id="loading-screen">
+
+        <div class="loader-content">
+
+            <img
+                src="assets/icons/ball.webp"
+                id="loading-ball"
+            >
+
+            <h1>Football Clicker</h1>
+
+            <p>Загрузка...</p>
+
+            <div class="loading-bar">
+
+                <div id="loading-progress"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <main id="game">
+
+        <section id="game-panel">
+
+            <div id="score">
+                <img class="score-icon" src="assets/icons/dollar.webp">
+                <span id="score-value">$0</span>
+
+            </div>
+
+            <div id="player-container">
+
+                    <div id="player-glow"></div>    
+
+                    <img
+                        id="player"
+                        src="assets/players/rookie.webp"
+                        alt="Футболист"
+                    >
+            </div>
+
+            <section id="stats">
+                <div class="stat-card">
+                    <div class="stat-title">
+                        <img class="stat-icon stat-icon-dollar" src="assets/icons/dollar.webp">
+                        За клик
+                    </div>
+
+                    <div
+                        id="click-power"
+                        class="stat-value"
+                    >
+                        $1
+                    </div>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-title">
+                        <img class="stat-icon stat-icon-multiplier" src="assets/icons/multiplier.webp">
+                        Бонус
+                    </div>
+
+                    <div
+                        id="multiplier"
+                        class="stat-value"
+                    >
+                        ×1
+                    </div>
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-title">
+
+                        <img
+                            src="assets/icons/clock.webp"
+                            class="stat-icon stat-icon-passive"
+                        >
+                        В секунду
+
+                    </div>
+
+                    <div
+                        id="passive-income"
+                        class="stat-value"
+                    >
+
+                        $0/с
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </section>
+
+        <section id="shop">
+
+            <div id="shop-tabs">
+
+                <button id="players-tab" class="active">
+                    Футболисты
+                </button>
+
+                <button id="upgrades-tab">
+                    Улучшения
+                </button>
+
+            </div>
+
+            <div id="shop-content">
+
+                <div id="player-list"></div>
+
+                <div id="upgrade-list" hidden></div>
+
+            </div>
+
+        </section>
+
+        <button id="sound-toggle">
+            <img
+                id="sound-icon"
+                src="assets/icons/soundOn.webp"
+                alt="Звук"
+            >
+        </button>
+
+    </main>
+
+    <script src="https://yandex.ru/games/sdk/v2"></script>
+    <script type="module" src="js/main.js"></script>
+
+</body>
+</html>
