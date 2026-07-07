@@ -959,12 +959,16 @@ body {
 
 #reward-ad:disabled{
     background:#777;
+    opacity:.7;
     cursor:default;
     transform:none;
 }
 
 #ad-boost{
-    text-align:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
     font-size:40px;
     font-weight:700;
     color:#ffd43b;
@@ -974,4 +978,9 @@ body {
         -1px  1px 0 #000,
         1px  1px 0 #000,
         0 0 8px rgba(255,212,59,.6);
+}
+
+#boost-icon{
+    width:36px;
+    height:50px;
 }

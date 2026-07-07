@@ -150,8 +150,10 @@ button.addEventListener("click", () => {
 });
 
 document.getElementById("reward-ad").addEventListener("click",()=>{
-    game.startAdBoost();
-    ui.update();
+    sdk.showRewardedAd(()=>{
+        game.startAdBoost();
+        ui.update();
+    });
 });
 
 renderShop(game, ui);

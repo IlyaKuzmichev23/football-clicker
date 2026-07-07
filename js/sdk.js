@@ -67,4 +67,25 @@ export class SDK {
         });
     }
 
+    async showRewardedAd(callback){
+        if(this.isLocal){
+            callback();
+            return;
+        }
+
+        this.ysdk.adv.showRewardedVideo({
+            callbacks:{
+                onRewarded:()=>{
+                    callback();
+                },
+                onClose:()=>{
+                    console.log("Реклама закрыта");
+                },
+                onError:(e)=>{
+                    console.error("Ошибка рекламы",e);
+                }
+            }
+        });
+    }
+
 }

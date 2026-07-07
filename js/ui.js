@@ -41,5 +41,12 @@ export class UI {
         }else{
             boost.hidden=true;
         }
+
+        const rewardButton=document.getElementById("reward-ad");
+        if(this.game.adTimer>0){
+            rewardButton.disabled=true;
+        }else{
+            rewardButton.disabled=false;
+        }
     }
 }
