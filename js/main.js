@@ -9,23 +9,63 @@ import { SDK } from "./sdk.js";
 
 import { renderShop } from "./shop.js"; 
 
+
+async function loadYandexSDK(){
+    const isLocal=
+        location.hostname==="127.0.0.1"||
+        location.hostname==="localhost";
+
+    if(isLocal)
+        return;
+
+    await new Promise(resolve=>{
+        const script=document.createElement("script");
+        script.src="https://yandex.ru/games/sdk/v2";
+        script.onload=resolve;
+        script.onerror=()=>{
+            console.error("Не удалось загрузить SDK");
+            resolve();
+        };
+        document.head.appendChild(script);
+    });
+}
+
+async function saveGame(){
+    if(sdk.isAuthorized()){
+        await sdk.save(game.getSaveData());
+    }else{
+        localStorage.setItem(
+            "football-clicker-save",
+            JSON.stringify(game.getSaveData())
+        );
+    }
+}
+
+async function loadGame(game){
+    if(sdk.isAuthorized()){
+        console.log("Загрузка из облака");
+        game.loadSaveData(await sdk.load());
+    }else{
+        console.log("Загрузка из localStorage");
+        const data=JSON.parse(localStorage.getItem("football-clicker-save"));
+        game.loadSaveData(data);
+    }
+}
+
 const loading = document.getElementById("loading-screen");
 const progress = document.getElementById("loading-progress");
 
+
+await loadYandexSDK();
+
 const sdk = new SDK();
-
 await sdk.init();
-
 await sdk.initPlayer();
-
 const game = new Game(PLAYERS);
-
-game.load();
+await loadGame(game);
 
 const ui = new UI(game);
-
 renderShop(game, ui);
-
 ui.update();
 
 let percent = 0;
@@ -90,7 +130,7 @@ setTimeout(() => {
 setInterval(() => {
     game.tickPassiveIncome();
     ui.update();
-    game.save();
+    saveGame(game);
 }, 1000);
 
 window.addEventListener("blur", () => {

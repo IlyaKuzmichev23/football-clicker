@@ -31,8 +31,13 @@ export class Game {
     }
 
     isPlayerOwned(playerId) {
-    return this.ownedPlayers.includes(playerId);
-}
+        return this.ownedPlayers.includes(playerId);
+    }
+
+    startAdBoost(){
+        this.adMultiplier=2;
+        this.adTimer=60;
+    }
 
     buyPlayer(player) {
 
@@ -130,6 +135,26 @@ export class Game {
                 this.passiveIncome += upgrade.bonus * level;
             }
         }
+    }
+
+    getSaveData(){
+        return {
+            score:this.score,
+            currentPlayer:this.currentPlayer,
+            ownedPlayers:this.ownedPlayers,
+            upgradeLevels:this.upgradeLevels
+        };
+    }
+
+
+    loadSaveData(data){
+        if(!data)
+            return;
+        this.score=data.score??0;
+        this.currentPlayer=data.currentPlayer??0;
+        this.ownedPlayers=data.ownedPlayers??[0];
+        this.upgradeLevels=data.upgradeLevels??{};
+        this.recalculateStats();
     }
 
 }
