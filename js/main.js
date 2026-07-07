@@ -70,27 +70,20 @@ ui.update();
 
 let percent = 0;
 
-const loader = setInterval(() => {
-
+const loader = setInterval(async () => {
     percent++;
-
     progress.style.width = percent + "%";
-
-    if (percent >= 100) {
-
+    if(percent>=100){
         clearInterval(loader);
-
-        loading.style.opacity = "0";
-
-        setTimeout(() => {
-
+        loading.style.opacity="0";
+        setTimeout(async ()=>{
             loading.remove();
-
-        }, 300);
-
+            await sdk.showFullscreenAd();
+            document.getElementById("game").style.visibility="visible";
+            ui.update();
+        },300);
     }
-
-}, 30);
+},30);
 
 const effects = new Effects(
     document.getElementById("player-container")
@@ -156,6 +149,10 @@ button.addEventListener("click", () => {
         : "assets/icons/soundOff.webp";
 });
 
+document.getElementById("reward-ad").addEventListener("click",()=>{
+    game.startAdBoost();
+    ui.update();
+});
 
 renderShop(game, ui);
 

@@ -45,6 +45,8 @@ body {
     gap:30px;
 
     align-items:start;
+
+    visibility:hidden;
 }
 
 #game-panel {
@@ -921,4 +923,55 @@ body {
 
     transition:opacity .3s;
 
+}
+
+#ad-panel{
+    position:fixed;
+    top:100px;
+    left:60px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    z-index:100;
+}
+
+#reward-ad{
+    width:220px;
+    height:100px;
+    border:none;
+    border-radius:16px;
+    background:#3fbf5f;
+    color:white;
+    font-size:36px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.2s;
+    line-height:1.4;
+}
+
+#reward-ad:hover{
+    transform:scale(1.05);
+}
+
+#reward-ad:active{
+    transform:scale(.95);
+}
+
+#reward-ad:disabled{
+    background:#777;
+    cursor:default;
+    transform:none;
+}
+
+#ad-boost{
+    text-align:center;
+    font-size:40px;
+    font-weight:700;
+    color:#ffd43b;
+    text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px  1px 0 #000,
+        1px  1px 0 #000,
+        0 0 8px rgba(255,212,59,.6);
 }

@@ -48,4 +48,23 @@ export class SDK {
         }
     }
 
+    async showFullscreenAd(){
+        if(this.isLocal)
+            return;
+
+        return new Promise(resolve=>{
+            this.ysdk.adv.showFullscreenAdv({
+                callbacks:{
+                    onClose:()=>{
+                        resolve();
+                    },
+                    onError:(e)=>{
+                        console.error("Ошибка рекламы",e);
+                        resolve();
+                    }
+                }
+            });
+        });
+    }
+
 }

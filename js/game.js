@@ -7,6 +7,9 @@ export class Game {
         this.passiveIncome = 0;
         this.score = 0;
 
+        this.adMultiplier=1;
+        this.adTimer=0;
+
         this.baseClick = 1;
         this.upgradeBonus = 0;
         this.currentPlayer = 0;
@@ -19,7 +22,7 @@ export class Game {
     }
 
     get multiplier() {
-        return this.players[this.currentPlayer].multiplier;
+        return this.players[this.currentPlayer].multiplier*this.adMultiplier;
     }
 
     get passiveMoney(){
@@ -94,6 +97,11 @@ export class Game {
 
     tickPassiveIncome() {
         this.score += this.passiveMoney;
+        if(this.adTimer>0){
+            this.adTimer--;
+            if(this.adTimer===0)
+                this.adMultiplier=1;
+        }
     }
 
     save() {
