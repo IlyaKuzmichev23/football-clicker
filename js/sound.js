@@ -30,7 +30,6 @@ export class Sound {
     playBuy() {
         if (!this.soundEnabled)
             return;
-        console.log(this.soundEnabled);
         this.playSound(this.buy);
     }
 

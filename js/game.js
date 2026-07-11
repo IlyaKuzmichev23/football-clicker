@@ -3,6 +3,7 @@ import { UPGRADES } from "../data/upgrades.js";
 export class Game {
 
     constructor(players) {
+        this.paused=false;
         this.players = players;
         this.passiveIncome = 0;
         this.score = 0;
@@ -27,6 +28,14 @@ export class Game {
 
     get passiveMoney(){
         return this.passiveIncome*this.multiplier;
+    }
+
+    pause(){
+        this.paused=true;
+    }
+
+    resume(){
+        this.paused=false;
     }
 
     click() {
@@ -96,7 +105,11 @@ export class Game {
     }
 
     tickPassiveIncome() {
+        if(this.paused)
+            return;
+
         this.score += this.passiveMoney;
+        
         if(this.adTimer>0){
             this.adTimer--;
             if(this.adTimer===0)

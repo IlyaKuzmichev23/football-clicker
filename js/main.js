@@ -43,10 +43,8 @@ async function saveGame(){
 
 async function loadGame(game){
     if(sdk.isAuthorized()){
-        console.log("Загрузка из облака");
         game.loadSaveData(await sdk.load());
     }else{
-        console.log("Загрузка из localStorage");
         const data=JSON.parse(localStorage.getItem("football-clicker-save"));
         game.loadSaveData(data);
     }
@@ -78,9 +76,10 @@ const loader = setInterval(async () => {
         loading.style.opacity="0";
         setTimeout(async ()=>{
             loading.remove();
-            await sdk.showFullscreenAd();
+            await sdk.showFullscreenAd(game);
             document.getElementById("game").style.visibility="visible";
             ui.update();
+            sdk.gameReady();
         },300);
     }
 },30);

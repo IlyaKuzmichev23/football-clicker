@@ -8,24 +8,80 @@ export const PLAYERS = [
     },
     {
         id: 1,
-        name: "Неймар",
-        image: "assets/players/neymar.webp",
-        price: 50,
+        name: "Холланд",
+        image: "assets/players/haaland.webp",
+        //price: 1000,
+        price: 1,
         multiplier: 2,
     },
     {
         id: 2,
-        name: "Месси",
-        image: "assets/players/messi.webp",
-        price: 50000,
-        multiplier: 4,
+        name: "Ибрагимович",
+        image: "assets/players/ibrahimovich.webp",
+        //price: 5000,
+        price: 1,
+        multiplier: 3,
+    }
+    ,
+        {
+        id: 3,
+        name: "Винисиус",
+        image: "assets/players/vinisius.webp",
+        //price: 25000,
+        price: 1,
+        multiplier: 3,
     }
     ,
     {
-        id: 2,
+        id: 4,
+        name: "Мбапе",
+        image: "assets/players/mbape.webp",
+        //price: 100000,
+        price: 1,
+        multiplier: 4,
+    },
+        {
+        id: 5,
+        name: "Неймар",
+        image: "assets/players/neymar.webp",
+        //price: 500000,
+        price: 1,
+        multiplier: 5,
+    }
+    ,
+        {
+        id: 6,
+        name: "Месси",
+        image: "assets/players/messi.webp",
+        //price: 2000000,
+        price: 1,
+        multiplier: 6,
+    }
+    ,
+        {
+        id: 7,
         name: "Роналду",
         image: "assets/players/ronaldo.webp",
-        price: 250000,
+        //price: 8000000,
+        price: 1,
+        multiplier: 7,
+    }
+    ,
+        {
+        id: 8,
+        name: "Марадона",
+        image: "assets/players/maradona.webp",
+        //price: 30000000,
+        price: 1,
         multiplier: 8,
+    }
+    ,
+        {
+        id: 9,
+        name: "Пеле",
+        image: "assets/players/pele.webp",
+        //price: 100000000,
+        price: 1,
+        multiplier: 9,
     }
 ];

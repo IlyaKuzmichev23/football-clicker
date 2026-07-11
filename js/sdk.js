@@ -1,6 +1,7 @@
 export class SDK {
 
     constructor() {
+        this.lang="ru";
         this.ysdk = null;
         this.player = null;
         this.isLocal=
@@ -10,11 +11,10 @@ export class SDK {
 
     async init(){
         if(this.isLocal){
-            console.log("Локальный режим");
             return;
         }
         this.ysdk=await YaGames.init();
-        console.log("SDK загружен");
+        this.lang=this.ysdk.environment.i18n.lang;
     }
 
     async initPlayer(){
@@ -48,18 +48,22 @@ export class SDK {
         }
     }
 
-    async showFullscreenAd(){
+    async showFullscreenAd(game){
         if(this.isLocal)
             return;
+
+        game.pause();
 
         return new Promise(resolve=>{
             this.ysdk.adv.showFullscreenAdv({
                 callbacks:{
                     onClose:()=>{
+                        game.resume();
                         resolve();
                     },
                     onError:(e)=>{
                         console.error("Ошибка рекламы",e);
+                        game.resume();
                         resolve();
                     }
                 }
@@ -78,14 +82,17 @@ export class SDK {
                 onRewarded:()=>{
                     callback();
                 },
-                onClose:()=>{
-                    console.log("Реклама закрыта");
-                },
                 onError:(e)=>{
                     console.error("Ошибка рекламы",e);
                 }
             }
         });
+    }
+
+    gameReady(){
+        if(this.isLocal)
+            return;
+        this.ysdk.features.LoadingAPI?.ready();
     }
 
 }
