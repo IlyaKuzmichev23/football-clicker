@@ -75,11 +75,11 @@ const loader = setInterval(async () => {
         clearInterval(loader);
         loading.style.opacity="0";
         setTimeout(async ()=>{
-            loading.remove();
+            sdk.gameReady();
             await sdk.showFullscreenAd(game);
+            loading.remove();
             document.getElementById("game").style.visibility="visible";
             ui.update();
-            sdk.gameReady();
         },300);
     }
 },30);
