@@ -454,24 +454,32 @@ body{
 
 .game-button {
 
-    margin-top: min(6px, 0.6vh);
+    margin-top: min(6px, 0.6dvh);
 
     position: relative;
 
     width: fit-content;
 
-    min-width: min(120px, 10vw);
+    min-width: min(120px, 10vw, 10dvh);
 
-    padding:
-        min(10px, 1vh)
-        min(20px, 1.8vw);
+    height: min(44px, 4.5dvh, 2.8vw);
+
+    padding: 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
 
     border: none;
-    border-radius: min(12px, 1.2vh);
+
+    border-radius: min(12px, 1.2dvh);
 
     cursor: pointer;
 
-    font-size: min(16px, 1.6vh, 1vw);
+    font-size: min(16px, 1.6dvh, 1vw);
+
     font-weight: 700;
 
     color: white;
@@ -483,8 +491,8 @@ body{
     );
 
     box-shadow:
-        0 4px 0 #23851b,
-        0 8px 16px rgba(0,0,0,.25);
+        0 min(4px, 0.4dvh) 0 #23851b,
+        0 min(8px, 0.8dvh) min(16px, 1.6dvh) rgba(0,0,0,.25);
 
     transition:
         transform .12s,
@@ -492,6 +500,7 @@ body{
         box-shadow .12s;
 
     overflow: hidden;
+    
 }
 
 .game-button::before {
@@ -533,8 +542,8 @@ body{
     transform: translateY(2px);
 
     box-shadow:
-        0 2px 0 #23851b,
-        0 4px 8px rgba(0,0,0,.2);
+        0 min(4px, 0.4dvh) 0 #23851b,
+        0 min(8px, 0.8dvh) min(16px, 1.6dvh) rgba(0,0,0,.25);
 
 }
 
@@ -549,7 +558,7 @@ body{
     );
 
     box-shadow:
-        0 4px 0 #666666;
+        0 min(4px, 0.4dvh) 0 #666666;
 
     opacity: .9;
 
@@ -618,8 +627,8 @@ body{
     );
 
     box-shadow:
-        0 4px 0 #23851b,
-        0 8px 16px rgba(0,0,0,.25);
+        0 min(4px, 0.4dvh) 0 #23851b,
+        0 min(8px, 0.8dvh) min(16px, 1.6dvh) rgba(0,0,0,.25);
 
 }
 
@@ -797,10 +806,10 @@ body{
     position: fixed;
 
     left: min(20px, 2vw);
-    bottom: min(20px, 2vh);
+    bottom: min(150px, 15vh);
 
-    width: min(72px, 7vh, 4vw);
-    height: min(72px, 7vh, 4vw);
+    width: min(72px, 10vh, 6vw);
+    height: min(72px, 10vh, 6vw);
 
     border: none;
     background: transparent;
