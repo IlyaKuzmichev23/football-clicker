@@ -9,25 +9,36 @@ import { SDK } from "./sdk.js";
 
 import { renderShop } from "./shop.js"; 
 
+await sound.init();
 
-async function loadYandexSDK(){
-    const isLocal=
-        location.hostname==="127.0.0.1"||
-        location.hostname==="localhost";
 
-    if(isLocal)
+async function loadYandexSDK() {
+
+    const isLocal =
+        location.hostname === "127.0.0.1" ||
+        location.hostname === "localhost";
+
+    if (isLocal)
         return;
 
-    await new Promise(resolve=>{
-        const script=document.createElement("script");
-        script.src="https://yandex.ru/games/sdk/v2";
-        script.onload=resolve;
-        script.onerror=()=>{
+    await new Promise(resolve => {
+
+        const script = document.createElement("script");
+
+        script.src = "/sdk.js";
+        script.async = true;
+
+        script.onload = resolve;
+
+        script.onerror = () => {
             console.error("Не удалось загрузить SDK");
             resolve();
         };
-        document.head.appendChild(script);
+
+        document.body.append(script);
+
     });
+
 }
 
 async function saveGame(){
@@ -153,6 +164,10 @@ document.getElementById("reward-ad").addEventListener("click",()=>{
         game.startAdBoost();
         ui.update();
     });
+});
+
+document.addEventListener("contextmenu", (event) => {
+    event.preventDefault();
 });
 
 renderShop(game, ui);

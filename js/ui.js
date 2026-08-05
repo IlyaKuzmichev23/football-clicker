@@ -28,7 +28,7 @@ export class UI {
             this.game.players[this.game.currentPlayer].image;
 
         document.getElementById("passive-income").textContent =
-            `$${this.game.passiveMoney}/с`;
+            `$${this.game.passiveMoney}`;
         
         const boost=document.getElementById("ad-boost");
         const timer=document.getElementById("ad-time");
