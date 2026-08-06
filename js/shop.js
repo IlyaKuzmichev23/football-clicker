@@ -41,10 +41,16 @@ function renderPlayers(game, ui) {
         const card = document.createElement("div");
         card.className = "player-card";
 
-        card.innerHTML = `
-            <img src="${player.image}">
+        const owned = game.isPlayerOwned(player.id);
 
-            <h3>${player.name}</h3>
+        card.innerHTML = `
+            <img
+                src="${player.image}"
+                class="${owned ? "" : "locked"}">
+
+            <h3>
+                ${owned ? player.name : "?????"}
+            </h3>
 
             <div class="card-info">
 
@@ -129,10 +135,16 @@ function renderUpgrades(game, ui) {
 
         card.className = "upgrade-card";
 
-        card.innerHTML = `
-            <img src="${upgrade.image}">
+        const owned = game.getUpgradeLevel(upgrade.id) > 0;
 
-            <h3>${upgrade.name}</h3>
+        card.innerHTML = `
+            <img
+                src="${upgrade.image}"
+                class="${owned ? "" : "locked"}">
+
+            <h3>
+                ${owned ? upgrade.name : "?????"}
+            </h3>
 
             <div class="card-info">
 
@@ -168,7 +180,7 @@ function renderUpgrades(game, ui) {
 
         button.className = "game-button";
 
-        if (game.getUpgradeLevel(upgrade.id) > 0) {
+        if (owned) {
 
             card.classList.add("owned");
 

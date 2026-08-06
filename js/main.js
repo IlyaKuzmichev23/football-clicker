@@ -86,10 +86,14 @@ const loader = setInterval(async () => {
         clearInterval(loader);
         loading.style.opacity="0";
         setTimeout(async ()=>{
-            sdk.gameReady();
             await sdk.showFullscreenAd(game);
+
+            sdk.gameReady();
+
             loading.remove();
-            document.getElementById("game").style.visibility="visible";
+
+            document.getElementById("game").style.visibility = "visible";
+
             ui.update();
         },300);
     }
